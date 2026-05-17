@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabon Mode | Boutique Premium Libreville</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --gold: #d4af37;
+            --gold-light: #e8c84a;
+            --dark: #0a0a0a;
+            --dark2: #141414;
+            --dark3: #1e1e1e;
+            --light: #f5f5f0;
+            --gray: #999;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Lato', sans-serif; background: var(--dark); color: var(--light); }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--dark);
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            position: sticky; top: 0; z-index: 200;
+            padding: 0 40px;
+        }
+        .header-inner {
+            max-width: 1300px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 80px;
+        }
+        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-badge {
+            width: 52px; height: 52px;
+            border: 1.5px solid var(--gold);
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px; font-weight: 700;
+            color: var(--gold); letter-spacing: -1px;
+        }
+        .logo-text { line-height: 1.2; }
+        .logo-text span:first-child {
+            display: block; font-family: 'Playfair Display', serif;
+            font-size: 20px; font-weight: 700; color: #fff;
+        }
+        .logo-text span:last-child {
+            display: block; font-size: 10px; letter-spacing: 3px;
+            color: var(--gold); text-transform: uppercase;
+        }
+        nav { display: flex; gap: 30px; }
+        nav a {
+            color: var(--gray); text-decoration: none; font-size: 13px;
+            letter-spacing: 1px; text-transform: uppercase;
+            transition: color .3s; cursor: pointer;
+        }
+        nav a:hover, nav a.active { color: var(--gold); }
+        .btn-wa {
+            background: var(--gold); color: var(--dark);
+            padding: 11px 24px; border-radius: 4px;
+            font-weight: 700; font-size: 13px; letter-spacing: 1px;
+            text-transform: uppercase; text-decoration: none;
+            transition: background .3s, transform .2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .btn-wa:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative; height: 90vh; min-height: 600px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; text-align: center;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.85) 100%);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 0 20px; }
+        .hero-tag {
+            display: inline-block; border: 1px solid var(--gold);
+            color: var(--gold); font-size: 11px; letter-spacing: 4px;
+            text-transform: uppercase; padding: 6px 18px; border-radius: 2px;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 6vw, 72px); font-weight: 700;
+            line-height: 1.1; margin-bottom: 20px; color: #fff;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.8; margin-bottom: 36px; }
+        .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--gold); color: var(--dark);
+            padding: 14px 32px; border-radius: 4px; font-weight: 700;
+            font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+            text-decoration: none; transition: all .3s;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent; color: #fff;
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 14px 32px; border-radius: 4px;
+            font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+            text-decoration: none; transition: all .3s; cursor: pointer;
+        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* ── SECTION TITLE ── */
+        .section { max-width: 1300px; margin: 0 auto; padding: 80px 40px; }
+        .section-head { text-align: center; margin-bottom: 50px; }
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 12px;
+        }
+        .section-head p { color: var(--gray); font-size: 15px; }
+        .gold-line {
+            width: 60px; height: 2px; background: var(--gold);
+            margin: 16px auto 0;
+        }
+
+        /* ── FILTER TABS ── */
+        .filter-tabs {
+            display: flex; gap: 10px; justify-content: center;
+            flex-wrap: wrap; margin-bottom: 50px;
+        }
+        .tab {
+            background: transparent; border: 1px solid rgba(212,175,55,0.25);
+            color: var(--gray); padding: 10px 22px; border-radius: 30px;
+            font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+            cursor: pointer; transition: all .3s; font-family: 'Lato', sans-serif;
+        }
+        .tab:hover { border-color: var(--gold); color: var(--gold); }
+        .tab.active { background: var(--gold); color: var(--dark); border-color: var(--gold); font-weight: 700; }
+
+        /* ── PRODUCT GRID ── */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: var(--dark2); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; overflow: hidden;
+            transition: transform .3s, box-shadow .3s, border-color .3s;
+            display: flex; flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-color: rgba(212,175,55,0.3);
+        }
+        .card-img {
+            position: relative; overflow: hidden;
+            height: 320px; background: var(--dark3);
+        }
+        .card-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .5s;
+        }
+        .card:hover .card-img img { transform: scale(1.07); }
+        .badge {
+            position: absolute; top: 14px; right: 14px;
+            background: var(--gold); color: var(--dark);
+            font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; padding: 5px 12px; border-radius: 2px;
+        }
+        .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .card-cat {
+            font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 8px;
+        }
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px; color: #fff; margin-bottom: 10px; line-height: 1.4;
+        }
+        .card-price { font-size: 15px; color: var(--gray); margin-bottom: 18px; }
+        .card-price strong { color: var(--gold); font-size: 17px; }
+        .card-btn {
+            margin-top: auto; background: transparent;
+            border: 1px solid rgba(212,175,55,0.4); color: var(--gold);
+            padding: 11px; border-radius: 4px; font-size: 11px;
+            letter-spacing: 2px; text-transform: uppercase;
+            text-decoration: none; text-align: center;
+            transition: all .3s; display: block; cursor: pointer;
+            font-family: 'Lato', sans-serif;
+        }
+        .card-btn:hover { background: var(--gold); color: var(--dark); font-weight: 700; }
+
+        /* ── BANNER ── */
+        .banner {
+            background: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80') center/cover;
+            position: relative; padding: 100px 40px; text-align: center;
+        }
+        .banner::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(0,0,0,0.72);
+        }
+        .banner-content { position: relative; z-index: 1; }
+        .banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px; color: #fff; margin-bottom: 16px;
+        }
+        .banner h2 span { color: var(--gold); }
+        .banner p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 30px; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--dark2); border-top: 1px solid rgba(212,175,55,0.2);
+            padding: 60px 40px 30px;
+        }
+        .footer-inner {
+            max-width: 1300px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px; margin-bottom: 50px;
+        }
+        .footer-brand p { color: var(--gray); font-size: 14px; line-height: 1.8; margin-top: 16px; }
+        .footer-col h4 {
+            color: var(--gold); font-size: 11px; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 20px;
+        }
+        .footer-col a {
+            display: block; color: var(--gray); text-decoration: none;
+            font-size: 14px; margin-bottom: 10px; transition: color .3s;
+        }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: 1300px; margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 24px; text-align: center;
+            color: rgba(255,255,255,0.3); font-size: 13px;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            header { padding: 0 20px; }
+            nav { display: none; }
+            .section { padding: 60px 20px; }
+            .footer-inner { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+            .card-img { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <a class="logo" href="#">
+            <div class="logo-badge">GM</div>
+            <div class="logo-text">
+                <span>Gabon Mode</span>
+                <span>Premium Fashion</span>
+            </div>
+        </a>
+        <nav>
+            <a class="active" onclick="filterProducts('tous',this)">Tous</a>
+            <a onclick="filterProducts('femmes',this)">Femmes</a>
+            <a onclick="filterProducts('hommes',this)">Hommes</a>
+            <a onclick="filterProducts('enfants',this)">Enfants</a>
+            <a onclick="filterProducts('chaussures',this)">Chaussures</a>
+            <a onclick="filterProducts('sacs',this)">Sacs</a>
+        </nav>
+        <a class="btn-wa" href="https://wa.me/+24176304877?text=Bonjour%20Gabon%20Mode%2C%20je%20voudrais%20commander">
+            📱 Commander
+        </a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-tag">Collection 2025</div>
+        <h1>La Mode<br><span>Premium</span><br>à Libreville</h1>
+        <p>Découvrez notre sélection exclusive de vêtements et accessoires haut de gamme pour toute la famille.</p>
+        <div class="hero-btns">
+            <a class="btn-primary" onclick="document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Voir la Collection</a>
+            <a class="btn-outline" href="https://wa.me/+24176304877?text=Bonjour%20Gabon%20Mode">Nous Contacter</a>
+        </div>
+    </div>
+</section>
+
+<!-- CATALOGUE -->
+<section class="section" id="catalogue">
+    <div class="section-head">
+        <h2>Notre Catalogue</h2>
+        <p>Mode élégante pour toute la famille — qualité premium, style inégalé</p>
+        <div class="gold-line"></div>
+    </div>
+
+    <div class="filter-tabs">
+        <button class="tab active" onclick="filterProducts('tous',this)">Tous les produits</button>
+        <button class="tab" onclick="filterProducts('femmes',this)">Femmes</button>
+        <button class="tab" onclick="filterProducts('hommes',this)">Hommes</button>
+        <button class="tab" onclick="filterProducts('enfants',this)">Enfants</button>
+        <button class="tab" onclick="filterProducts('chaussures',this)">Chaussures</button>
+        <button class="tab" onclick="filterProducts('sacs',this)">Sacs</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+</section>
+
+<!-- BANNER CTA -->
+<div class="banner">
+    <div class="banner-content">
+        <h2>Commandez via <span>WhatsApp</span></h2>
+        <p>Réservation rapide · Confirmation immédiate · Retrait au PK12 Libreville</p>
+        <a class="btn-primary" href="https://wa.me/+24176304877?text=Bonjour%2C%20je%20voudrais%20passer%20une%20commande%20sur%20Gabon%20Mode">
+            📱 +241 76 30 48 77
+        </a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="logo">
+                <div class="logo-badge">GM</div>
+                <div class="logo-text">
+                    <span>Gabon Mode</span>
+                    <span>Premium Fashion</span>
+                </div>
+            </div>
+            <p>Votre boutique de mode premium au cœur de Libreville. Vêtements, chaussures et accessoires de qualité pour toute la famille.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Catalogue</h4>
+            <a onclick="filterProducts('femmes',null);document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Femmes</a>
+            <a onclick="filterProducts('hommes',null);document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Hommes</a>
+            <a onclick="filterProducts('enfants',null);document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Enfants</a>
+            <a onclick="filterProducts('chaussures',null);document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Chaussures</a>
+            <a onclick="filterProducts('sacs',null);document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Sacs</a>
+        </div>
+        <div class="footer-col">
+            <h4>Informations</h4>
+            <a href="#">À propos</a>
+            <a href="#">Livraison</a>
+            <a href="#">Retours</a>
+            <a href="#">FAQ</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="https://wa.me/+24176304877">📱 +241 76 30 48 77</a>
+            <a href="#">📍 PK12, Libreville</a>
+            <a href="#">🕐 Lun–Dim : 10h–18h</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 Gabon Mode · Boutique Premium Libreville · Tous droits réservés
+    </div>
+</footer>
+
+<script>
+const products = [
+    // FEMMES
+    { name:"Robe Rayée Élégante",        cat:"femmes",     price:45000, badge:"Populaire",   img:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80" },
+    { name:"Robe Verte Fleurie",          cat:"femmes",     price:52000, badge:"Tendance",    img:"https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=80" },
+    { name:"Robe Bleue Classique",        cat:"femmes",     price:48000, badge:"Nouveau",     img:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" },
+    { name:"Robe Blanche Estivale",       cat:"femmes",     price:42000, badge:"Exclusif",    img:"https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80" },
+    { name:"Tenue Casual Chic",           cat:"femmes",     price:38000, badge:"Coup de cœur",img:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600&q=80" },
+    { name:"Robe Longue Bohème",          cat:"femmes",     price:55000, badge:"Premium",     img:"https://images.unsplash.com/photo-1594938298603-c8148c4b4868?w=600&q=80" },
+    { name:"Ensemble Tailleur Femme",     cat:"femmes",     price:68000, badge:"Luxe",        img:"https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" },
+    { name:"Blouse Romantique",           cat:"femmes",     price:35000, badge:"Nouveau",     img:"https://images.unsplash.com/photo-1554568218-0f1715e72254?w=600&q=80" },
+
+    // HOMMES
+    { name:"Chemise Oxford Premium",      cat:"hommes",     price:40000, badge:"Populaire",   img:"https://images.unsplash.com/photo-1594938298603-c8148c4b4868?w=600&q=80" },
+    { name:"Costume Classique Noir",      cat:"hommes",     price:85000, badge:"Premium",     img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" },
+    { name:"Chemise Rayée Élégante",      cat:"hommes",     price:38000, badge:"Tendance",    img:"https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&q=80" },
+    { name:"Pantalon Chino Beige",        cat:"hommes",     price:48000, badge:"Nouveau",     img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&q=80" },
+    { name:"Veste Blazer Moderne",        cat:"hommes",     price:72000, badge:"Luxe",        img:"https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80" },
+    { name:"Tenue Décontractée Chic",     cat:"hommes",     price:44000, badge:"Coup de cœur",img:"https://images.unsplash.com/photo-1533681904393-9ab6eee7e408?w=600&q=80" },
+    { name:"Pantalon Noir Élégant",       cat:"hommes",     price:52000, badge:"Populaire",   img:"https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=600&q=80" },
+    { name:"Chemise Blanche Luxe",        cat:"hommes",     price:42000, badge:"Exclusif",    img:"https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=600&q=80" },
+
+    // ENFANTS
+    { name:"Robe Fille Colorée",          cat:"enfants",    price:22000, badge:"Nouveau",     img:"https://images.unsplash.com/photo-1503944583220-79d4dd712b08?w=600&q=80" },
+    { name:"Tenue Garçon Casual",         cat:"enfants",    price:18000, badge:"Populaire",   img:"https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=600&q=80" },
+    { name:"Ensemble Enfant Élégant",     cat:"enfants",    price:28000, badge:"Tendance",    img:"https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=600&q=80" },
+    { name:"Robe Bébé Douce",             cat:"enfants",    price:20000, badge:"Nouveau",     img:"https://images.unsplash.com/photo-1522771930-78848d9293e8?w=600&q=80" },
+    { name:"Veste Enfant Légère",         cat:"enfants",    price:30000, badge:"Premium",     img:"https://images.unsplash.com/photo-1503944583220-79d4dd712b08?w=600&q=80" },
+    { name:"Pantalon Enfant Confort",     cat:"enfants",    price:16000, badge:"Coup de cœur",img:"https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=600&q=80" },
+
+    // CHAUSSURES
+    { name:"Talons Noirs Élégants",       cat:"chaussures", price:48000, badge:"Populaire",   img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80" },
+    { name:"Sneakers Blanches Luxe",      cat:"chaussures", price:42000, badge:"Tendance",    img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" },
+    { name:"Sandales Dorées Chic",        cat:"chaussures", price:35000, badge:"Nouveau",     img:"https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&q=80" },
+    { name:"Mocassins Homme Premium",     cat:"chaussures", price:55000, badge:"Premium",     img:"https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=600&q=80" },
+    { name:"Escarpins Bordeaux",          cat:"chaussures", price:50000, badge:"Luxe",        img:"https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600&q=80" },
+    { name:"Chaussures Sport Femme",      cat:"chaussures", price:38000, badge:"Coup de cœur",img:"https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&q=80" },
+
+    // SACS
+    { name:"Sac à Main Noir Classique",   cat:"sacs",       price:45000, badge:"Populaire",   img:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" },
+    { name:"Sac Doré Élégant",            cat:"sacs",       price:55000, badge:"Luxe",        img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80" },
+    { name:"Sac À Dos Moderne",           cat:"sacs",       price:38000, badge:"Tendance",    img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80" },
+    { name:"Pochette Soirée Luxe",        cat:"sacs",       price:32000, badge:"Exclusif",    img:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&q=80" },
+    { name:"Sac Bandoulière Chic",        cat:"sacs",       price:42000, badge:"Nouveau",     img:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80" },
+    { name:"Grand Sac Voyage Premium",    cat:"sacs",       price:62000, badge:"Premium",     img:"https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=600&q=80" },
+];
+
+const catLabels = {
+    femmes:"Femmes", hommes:"Hommes", enfants:"Enfants",
+    chaussures:"Chaussures", sacs:"Sacs"
+};
+
+let currentCat = 'tous';
+
+function filterProducts(cat, el) {
+    currentCat = cat;
+
+    // update nav links
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    // update tabs
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    if (el) el.classList.add('active');
+
+    render();
+}
+
+function render() {
+    const grid = document.getElementById('grid');
+    const list = currentCat === 'tous' ? products : products.filter(p => p.cat === currentCat);
+    grid.innerHTML = list.map(p => `
+        <div class="card">
+            <div class="card-img">
+                <img src="${p.img}" alt="${p.name}" loading="lazy">
+                <div class="badge">${p.badge}</div>
+            </div>
+            <div class="card-body">
+                <div class="card-cat">${catLabels[p.cat]}</div>
+                <div class="card-name">${p.name}</div>
+                <div class="card-price"><strong>${p.price.toLocaleString('fr-FR')}</strong> FCFA</div>
+                <a class="card-btn" href="https://wa.me/+24176304877?text=Bonjour%20Gabon%20Mode%2C%20je%20suis%20intéressé%20par%20:%20${encodeURIComponent(p.name)}%20(${p.price.toLocaleString('fr-FR')}%20FCFA)">
+                    Commander
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
+render();
+</script>
+</body>
+</html>
